@@ -195,8 +195,9 @@ class WebResearchRetriever(BaseRetriever):
 
         # Check for any new urls that we have not processed
         new_urls = list(urls.difference(self.url_database))
-
+        new_urls = new_urls[:1] # force top1
         logger.info(f"New URLs to load: {new_urls}")
+        
         print(f"New URLs to load: {new_urls}")
         # Load, split, and add new urls to vectorstore
         if new_urls:
